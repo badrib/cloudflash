@@ -22,11 +22,6 @@ tunnel-pid = ''
 
     @post '/management/tunnel/sync' : ->
 
-
-# Return Management Tunnel Status - using JSON
-    @get '/management/tunnel' : ->
-        return {"status": "#{tunnel-status}"}
-
         #fetch tunnel pid and then do the following
         cfile.readFile filename, (result) ->
             @send new Error result if result instanceof Error
