@@ -80,7 +80,7 @@ tunnelSchema =
         tunnel-status = "configured"
         return {result:success}
 
-
+# Return Management Tunnel Status
     @get '/management/tunnel' : ->
         return {"status": "#{tunnel-status}"}
 
