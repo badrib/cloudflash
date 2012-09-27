@@ -1,5 +1,9 @@
-module.exports = class fileops
-    createFile = (filename, callback) ->
+fs = require 'fs'
+path = require 'path'
+exec = require('child_process').exec
+
+class fileops
+    createFile: (filename, callback) ->
         try
             dir = path.dirname filename
             unless path.existsSync dir
@@ -10,21 +14,36 @@ module.exports = class fileops
                         exec "touch #{filename}"
             else
                 console.log 'path exists'
-                exec "touch #{filename}"
-            callback({result: success})
+                exec "touch #{filename}", (error, stdout, stderr) =>
+                    callback(error) if error
+                    callback(true)
         catch err
-            console.log  "Unable to write configuration file into #{filename}"
+            console.log  "Unable to create file #{filename}"
             callback (err)
 
-    updateFile = (config, filename) ->
+    removeFile: (filename, callback) ->
+        fs.unlink filename, (error)->
+            callback(error)
+
+    updateFile: (filename, config) ->
         fs.writeFileSync filename, config
 
-    fileExists = (filename, callback) ->
+    fileExists: (filename, callback) ->
         stats = fs.existsSync filename
         if stats.isFile
-            callback ({result:success})
+            callback({result:true})
         else
             console.log 'File does not exist'
-            err = new Error "File does not exist"
-            callback (err)
-     
+            error = new Error "File does not exist"
+            callback(true)
+
+    readFile: (filename, callback) ->
+        @fileExists filename, (result) ->
+            if result instanceof Error
+                callback(result)
+            else
+                buf = fs.readFileSync filename, 'utf-8'
+                callback(buf)
+
+       
+module.exports = new fileops
