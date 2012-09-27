@@ -23,7 +23,7 @@ tunnel-pid = ''
     @post '/management/tunnel/sync' : ->
 
 
-# Return Management Tunnel Status
+# Return Management Tunnel Status - using JSON
     @get '/management/tunnel' : ->
         return {"status": "#{tunnel-status}"}
 
