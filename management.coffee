@@ -22,11 +22,11 @@ tunnel-pid = ''
 
     @post '/management/tunnel/sync' : ->
 
-<<<<<<< HEAD
+
 # Return Management Tunnel Status
     @get '/management/tunnel' : ->
         return {"status": "#{tunnel-status}"}
-=======
+
         #fetch tunnel pid and then do the following
         cfile.readFile filename, (result) ->
             @send new Error result if result instanceof Error
@@ -45,6 +45,3 @@ tunnel-pid = ''
                 @send respString
             else
                 @send new Error respString
->>>>>>> upstream/master
-
-
