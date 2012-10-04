@@ -1,0 +1,14 @@
+{
+	"author": "Maltesh Badiger",
+	"name": "lxc",
+	"description": "lxc coffee script for use in cloudflash",
+	"version":"0.0.1",
+	"engines" : {
+		"node": "0.6.12"
+	},
+	"dependencies": {},
+	"devDependencies":{},
+	"main":"./src/lxc"
+}
+	
+	

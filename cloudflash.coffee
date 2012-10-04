@@ -1,4 +1,4 @@
-{@app} = require('zappajs') 5000, ->
+{@app} = require('zappajs') 8080, ->
     @configure =>
       @use 'bodyParser', 'methodOverride', @app.router, 'static'
       @set 'basepath': '/v1.0'
@@ -9,13 +9,11 @@
 
     @enable 'serve jquery', 'minify'
 
-    @include 'services'
-    @include 'personality'
-
-    @include 'openvpn'
-#    @include 'management'
-#    @include 'openvpnlog'
-#    @include 'firewall'
+    @include './lib/services'
+    @include './lib/personality'
+    @include './lib/management'
+    @include './lib/network'
+    @include './lib/webproxy'
 
     @get '/test': ->
         @render index: {title: 'cloudflash', layout: no}

@@ -53,6 +53,7 @@ db.on 'load', ->
                 result:      { type: "string"  }
 
 @include = ->
+    zappainclude = @include
     uuid = require('node-uuid')
 
     webreq = require 'request'
@@ -100,6 +101,7 @@ db.on 'load', ->
         # 1. check if the ID already exists in DB, if so, we reject
         # 2. check if package already installed, if so, we we skip download...
         return @next new Error "Duplicate service ID detected!" if db.get service.id
+        zappainclude "./node_modules/#{service.description.name}/api/#{service.description.name}"
 
         console.log "checking if the package has already been installed..."
         exec "dpkg -l #{desc.name} | grep #{desc.name}", (error, stdout, stderr) =>

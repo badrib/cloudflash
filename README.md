@@ -6,9 +6,17 @@ CloudFlash is a web framework for cloud based automation of openvpn, firmware, m
 CloudFlash supports JSON data serialization format. The format for both the request and the response
 should be specified by using the Content-Type header, the Accept header.
 
+Steps to Install
+===============
+1) Download cloudflash files into your system
+2) Run the follwing commands in cloudflash directory
+   - npm install 
+   - sudo coffee cloudflash.coffee
+
+Note: During new service post, deb package uses npm to fetch the published package
 
 *List of APIs*
-=============
+==============
 
 <table>
   <tr>

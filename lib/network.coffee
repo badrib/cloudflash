@@ -87,12 +87,18 @@ networkstatus = ''
         @send {"result":"success"}
 
     @get '/network/interfaces' : ->
+        '''
+        This endpoint must fetch the interfaces from OS and associate any configured parameters
+        to it from the database.
+        '''
+        #TODO: Fetch network interfaces from OS 
         res = { 'network': [] }
         dbnwk.main.forEach (key,val) ->
             console.log 'found ' + key
             res.network.push key
         console.log res
         @send res
+
     @get '/network/interfaces/:id' : ->
         result = dbnwk.main.get @params.id
         console.log "result: " + result
