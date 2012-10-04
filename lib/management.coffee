@@ -1,3 +1,4 @@
+#File: Management.coffee
 
 @include = ->
     cfile = new require 'fileops'
