@@ -29,8 +29,9 @@ class fileops
         fs.writeFileSync filename, config
 
     fileExists: (filename, callback) ->
-        stats = fs.existsSync filename
-        if stats.isFile
+        #Note: fs.existsSync did not work.
+        if path.existsSync filename
+            console.log 'file exists'
             callback({result:true})
         else
             console.log 'File does not exist'
@@ -42,7 +43,8 @@ class fileops
             if result instanceof Error
                 callback(result)
             else
-                buf = fs.readFileSync filename, 'utf-8'
+                console.log 'reading the file'
+                buf = fs.readFileSync filename
                 callback(buf)
 
        

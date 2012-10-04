@@ -1,10 +1,10 @@
 
 
 module.exports = class webclient
-    constructor = ->
+    constructor : ->
         console.log 'webclient initialized'
 
-    fetchResponse = (url, method, body, callback) ->
+    fetchResponse: (url, method, body, callback) ->
         url = require 'url'
         parsedurl = url.parse "url", 0, true
         http = require 'http'

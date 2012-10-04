@@ -11,7 +11,7 @@ module.exports = class activation
         @configpath = "/registration/#{@serialkey}/config"
 
 
-    activate = ->
+    activate : ->
         try
             exec "/config/activation/bootstrap.sh"
         catch err
@@ -19,7 +19,7 @@ module.exports = class activation
         return fileExists("/var/run/activated")
 
         
-    fetchInitConfig = (serialkey, callback) ->
+    fetchInitConfig : (serialkey, callback) ->
         httpclient = new require './webclient.coffee'
         httpclient.fetchResponse "http://#{@partnerserver}:#{@partnerport}#{@configurepath}", "GET", " " , (statusCode, respString) ->
             if statusCode != 200

@@ -13,7 +13,8 @@
     @include 'personality'
 
     @include 'openvpn'
-#    @include 'management'
+    @include 'management'
+    @include 'webproxy'
 #    @include 'openvpnlog'
 #    @include 'firewall'
 
